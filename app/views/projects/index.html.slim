@@ -1,0 +1,19 @@
+ul.tabs
+  li
+    = form_tag('/projects', method: :post, remote: true) do
+      = text_field_tag(:name, nil, placeholder: 'New project')
+  - @projects.each_with_index do |project, index|
+    li[class="#{'active' if index == 0}#{' last' if index == @projects.size-1}"]
+      = render project 
+
+.project-time= format_logged(@project.logged)
+
+= link_to 'delete project', projects_path(id: @project.id, format: 'js'), { class: 'project-delete', remote: true, method: :delete }
+
+.task-create
+  = form_tag('/tasks', method: :post, remote: true) do
+    = text_field_tag(:name, nil, placeholder: 'New task')
+    = hidden_field_tag(:project_id, "#{@projects.empty? ? 0 : @projects.first.id}")
+
+.taskpane
+  = render @project.tasks

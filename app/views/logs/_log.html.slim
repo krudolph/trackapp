@@ -1,0 +1,8 @@
+div[class="log#{' log-work' if !log.stop?}"]
+
+  span.log-summary #{format_logged(log.duration)}
+
+  span #{l(log.start, format: :long)} 
+
+  - if log.stop
+    span &#8611; #{l(log.stop, format: :long)}

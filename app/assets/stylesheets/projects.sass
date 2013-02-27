@@ -1,0 +1,58 @@
+ul.tabs
+  border-right: 1px solid $grey-medium
+  float: left
+  margin: 0
+  padding: 10px 0px
+  width: 14%
+
+li
+  list-style: none
+
+.project
+  border-top: 1px solid $grey-light
+  border-left: 1px solid $grey-light
+  border-right: none
+  padding: 8px
+  display: block
+  color: $grey-medium
+  text-decoration: none
+  font-weight: bold
+  margin-left: 3px
+  background-color: $background
+
+ul.tabs a:hover
+  margin-left: -3px
+
+li.active .project
+  margin-left: -3px
+  margin-right: -1px
+  padding-bottom: 10px
+  border: 1px solid $grey-medium
+  border-right: none
+  color: $grey-dark
+
+li.last .project
+  border-bottom: 1px solid $grey-light
+
+li form input
+  border: 1px solid $grey-medium
+  border-right: none
+  margin: 0px
+  padding: 8px
+  width: 100%
+  box-sizing: border-box
+  font-weight: bold
+
+.project-delete, .project-time
+  float: right
+  margin: 10px 5px
+  text-decoration: none
+  color: $grey-medium
+
+.project-time
+  font-size: 150%
+  font-weight: bold
+
+.project-delete
+  margin-top: 15px 
+
