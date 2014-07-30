@@ -4,7 +4,7 @@ class TasksControllerTest < ActionController::TestCase
 
   test 'should create a new task' do
     assert_difference('Task.count') do
-      post :create, project_id: 1, name: 'A test task', format: :js
+      xhr :post, :create, project_id: 1, name: 'A test task', format: :js
     end
     assert_response :success
     assert_not_nil assigns(:task)
@@ -13,7 +13,7 @@ class TasksControllerTest < ActionController::TestCase
 
   test 'should close a task' do
     task = tasks(:unfinished)
-    get :finish, id: 2, format: :js
+    xhr :get, :finish, id: 2, format: :js
     assert task.reload.done?
     assert_response :success
     assigns(:task) == task
@@ -23,7 +23,7 @@ class TasksControllerTest < ActionController::TestCase
   test 'should delete a task' do
     deleted = tasks(:finished)
     assert_difference('Task.count', -1) do
-      delete :destroy, id: 1, format: :js
+      xhr :delete, :destroy, id: 1, format: :js
     end
     assert_response :success
     assigns(:task) == deleted
@@ -32,7 +32,7 @@ class TasksControllerTest < ActionController::TestCase
 
   test 'should create a new log on start' do
     assert_difference('tasks(:finished).logs.size') do
-      get :start, id: 1, format: :js
+      xhr :get, :start, id: 1, format: :js
     end
     assert_response :success
     assigns(:task) == tasks(:finished)
@@ -41,7 +41,7 @@ class TasksControllerTest < ActionController::TestCase
   end
 
   test 'should update a log on stop' do
-    get :stop, id: 1, format: :js
+    xhr :get, :stop, id: 1, format: :js
     assert_response :success
     assert !tasks(:finished).logs.last.stop.nil?
     assigns(:task) == tasks(:finished)

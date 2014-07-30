@@ -11,7 +11,7 @@ class ProjectsControllerTest < ActionController::TestCase
   end
 
   test 'should get project' do
-    get :show, id: 1, format: :js
+    xhr :get, :show, id: 1, format: :js
     assert_response :success
     assigns(:project) == projects(:tree)
     assert_template 'projects/show'
@@ -19,7 +19,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test 'should create a new project' do
     assert_difference('Project.count') do
-      post :create, name: 'A test project', format: :js
+      xhr :post, :create, name: 'A test project', format: :js
     end
     assert_response :success
     assert_not_nil assigns(:project)
@@ -29,7 +29,7 @@ class ProjectsControllerTest < ActionController::TestCase
   test 'should delete a project' do
     deleted = projects(:tree)
     assert_difference('Project.count', -1) do
-      delete :destroy, id: 1, format: :js
+      xhr :delete, :destroy, id: 1, format: :js
     end
     assert_response :success
     assigns(:deleted) == deleted
