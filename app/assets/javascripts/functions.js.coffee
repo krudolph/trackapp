@@ -5,3 +5,7 @@
 @toggable = (parent) ->
   parent.find('.show-logs').on 'click', ->
     $(this).parents('.task:first').find('.task-logs').toggle 'slow'
+
+$ ->
+  for task in $('.task')
+    toggable $(task)
