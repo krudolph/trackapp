@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
     @project = Project.includes(tasks: :logs).first
+    @project ||= Project.create(name: 'Demo Project')
   end
 
   def show
