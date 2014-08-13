@@ -16,6 +16,7 @@ class SetupProjectsTasksLogs < ActiveRecord::Migration
       t.references :task, index: true
       t.timestamp :start
       t.timestamp :stop
+      t.timestamps
     end
 
   end
