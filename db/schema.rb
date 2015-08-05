@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20130227192935) do
 
-  create_table "logs", force: true do |t|
+  create_table "logs", force: :cascade do |t|
     t.integer  "task_id"
     t.datetime "start"
     t.datetime "stop"
@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 20130227192935) do
 
   add_index "logs", ["task_id"], name: "index_logs_on_task_id"
 
-  create_table "projects", force: true do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "name"
   end
 
-  create_table "tasks", force: true do |t|
+  create_table "tasks", force: :cascade do |t|
     t.string   "name"
     t.boolean  "done"
     t.integer  "project_id"
